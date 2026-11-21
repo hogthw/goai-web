@@ -1,0 +1,34 @@
+/* Trang Mức Độ Sẵn Sàng AI — hai thẻ công cụ: sát đầu trang, bằng nhau, nền công nghệ sáng trong suốt theo tông website */
+.section.readiness-choice { min-height: 0 !important; display: block; padding-top: 24px; padding-bottom: 56px; }
+.readiness-choice .assessment-grid { align-items: stretch; margin: 0; gap: 26px; }
+
+/* Thẻ: nền sáng mờ (tông #edf4ff → #f8fbff → #e9f7f5 như các khối khác) + lưới mảnh + ánh sáng nhẹ */
+.readiness-choice .assessment-card {
+  --glow: rgba(35, 106, 240, .15);
+  position: relative; overflow: hidden; isolation: isolate;
+  background:
+    radial-gradient(circle at 92% 4%, var(--glow), transparent 50%),
+    linear-gradient(rgba(20, 85, 214, .055) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(20, 85, 214, .055) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(145deg, rgba(237, 244, 255, .92), rgba(248, 251, 255, .92) 55%, rgba(233, 247, 245, .92));
+  box-shadow: 0 18px 50px rgba(21, 60, 112, .08);
+}
+.readiness-choice .assessment-card:nth-child(2) { --glow: rgba(99, 57, 180, .14); }
+
+/* Họa tiết mạch điện rất nhạt ở góc phải trên (nằm sau chữ) */
+.readiness-choice .assessment-card::after {
+  content: ""; position: absolute; top: 0; right: 0; width: 220px; height: 156px; z-index: -1; pointer-events: none; opacity: .22;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='170' viewBox='0 0 240 170' fill='none' stroke='%231455d6' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><path d='M240 28H176l-18 18H110'/><path d='M240 70H196l-14 14h-40l-16 16H84'/><path d='M240 112h-52l-20 20h-48'/><path d='M240 150H200'/><circle cx='110' cy='46' r='3.5' fill='%231455d6' stroke='none'/><circle cx='84' cy='100' r='3.5' fill='%231455d6' stroke='none'/><circle cx='120' cy='132' r='3.5' fill='%231455d6' stroke='none'/><circle cx='200' cy='150' r='3' fill='%231455d6' stroke='none'/></svg>") no-repeat top right / contain;
+}
+.readiness-choice .assessment-card:nth-child(2)::after { filter: hue-rotate(35deg); }
+
+/* Hai thẻ cao bằng nhau; dòng "16 câu…" và nút luôn thẳng hàng giữa hai thẻ */
+.readiness-choice .assessment-card h2 { margin-top: 0; }
+.readiness-choice .assessment-card > p:not(.book):not(.meta) { flex: 1 1 auto; margin-bottom: 0; }
+.readiness-choice .assessment-card .meta { margin-top: 0; padding-top: 14px; }
+.readiness-choice .assessment-card .button { margin-top: 16px; }
+
+@media (max-width: 760px) {
+  .section.readiness-choice { padding-top: 16px; padding-bottom: 32px; }
+  .readiness-choice .assessment-card::after { width: 150px; height: 106px; opacity: .18; }
+}

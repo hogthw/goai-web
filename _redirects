@@ -1,0 +1,8 @@
+# Dành cho khách TẮT JavaScript: biểu mẫu gửi tới /gui-form/ rồi được chuyển tiếp
+# (mã 307 giữ nguyên dữ liệu) sang Google Apps Script.
+#
+# SAU KHI CÓ URL WEB APP: xóa dòng /gui-form/ đang dùng ở cuối tệp và thay bằng dòng dạng:
+# /gui-form/  https://script.google.com/macros/s/XXXX/exec?secret=goai_zIu6scC8x62iokBy57xlZbeeVPnJrpAFd7BS3yuo  307
+#
+# Đang dùng: chuyển tiếp tới Web App đã cấu hình.
+/gui-form/  https://script.google.com/macros/s/AKfycbw8ZNk2Kjfg5iWYcjjSREacsoQR1jz20I9OLh5oH1oRGQCFwyX-CEovNiqLSZPFYis14Q/exec?secret=goai_zIu6scC8x62iokBy57xlZbeeVPnJrpAFd7BS3yuo  307

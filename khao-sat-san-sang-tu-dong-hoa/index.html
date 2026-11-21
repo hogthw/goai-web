@@ -1,0 +1,210 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex,follow"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@600&amp;display=swap" rel="stylesheet"><meta name="description" content="16 câu đánh giá một quy trình cụ thể. Kết quả Đỏ, Vàng, Xanh."><link rel="icon" href="/assets/favicon.ico?v=21" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=21"><link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png?v=21"><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png?v=21"><title>Đèn Tín Hiệu Sẵn Sàng Tự Động Hóa</title>
+
+
+<style>
+  :root{
+    --bg:#161B22;
+    --panel:#1E2530;
+    --panel-2:#242C39;
+    --line:rgba(255,255,255,0.08);
+    --text:#EEF0F3;
+    --muted:#8B94A3;
+    --amber:#E8A33D;
+    --amber-dim:rgba(232,163,61,0.15);
+    --red:#D95E4B;
+    --green:#4FA97A;
+    --yellow:#E8C13D;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);}
+  body{
+    font-family:'Be Vietnam Pro', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:0;
+  }
+  #app{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    padding:20px 18px 40px;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--amber);
+    font-weight:600;
+  }
+  h1{
+    font-size:26px;
+    line-height:1.25;
+    font-weight:800;
+    margin:8px 0 6px;
+    letter-spacing:-0.01em;
+  }
+  h2{
+    font-size:19px;
+    font-weight:700;
+    margin:0 0 4px;
+    line-height:1.35;
+  }
+  p{ line-height:1.6; color:var(--text); }
+  .muted{ color:var(--muted); font-size:14px; line-height:1.6; }
+
+  /* ---- Traffic light signature ---- */
+  .signal{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:center;
+    background:#0F1319;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:22px 16px;
+    width:74px;
+    margin:0 auto;
+  }
+  .bulb{
+    width:34px;height:34px;border-radius:50%;
+    background:#2A303C;
+    transition:all .4s ease;
+  }
+  .bulb.lit-red{ background:var(--red); box-shadow:0 0 22px 4px rgba(217,94,75,0.65);}
+  .bulb.lit-yellow{ background:var(--yellow); box-shadow:0 0 22px 4px rgba(232,193,61,0.65);}
+  .bulb.lit-green{ background:var(--green); box-shadow:0 0 22px 4px rgba(79,169,122,0.65);}
+
+  /* ---- intro screen ---- */
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px;
+    margin-top:16px;
+  }
+  .pillar-list{ margin-top:18px; display:flex; flex-direction:column; gap:8px;}
+  .pillar-row{
+    display:flex; align-items:center; gap:10px;
+    font-size:13.5px; color:var(--muted);
+  }
+  .pillar-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; font-weight:700; color:var(--amber);
+    width:20px; flex-shrink:0;
+  }
+  .primary-btn{
+    width:100%;
+    background:var(--amber);
+    color:#1A1204;
+    border:none;
+    border-radius:12px;
+    padding:16px;
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:700;
+    font-size:16px;
+    margin-top:22px;
+    cursor:pointer;
+  }
+  .primary-btn:active{ transform:scale(0.98); }
+  .primary-btn:disabled{ opacity:.4; cursor:not-allowed; pointer-events:none; }
+  .opt:focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+  .ghost-btn{
+    width:100%;
+    background:transparent;
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px;
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    margin-top:10px;
+    cursor:pointer;
+  }
+
+  /* ---- progress ---- */
+  .progress-wrap{
+    display:flex; align-items:center; gap:10px; margin:4px 0 18px;
+  }
+  .progress-track{
+    flex:1; height:4px; background:var(--panel-2); border-radius:2px; overflow:hidden;
+  }
+  .progress-fill{
+    height:100%; background:var(--amber); border-radius:2px; transition:width .3s ease;
+  }
+  .progress-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; color:var(--muted); white-space:nowrap;
+  }
+
+  /* ---- question ---- */
+  .q-block{ margin-top:22px; }
+  .q-index{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; color:var(--amber); font-weight:700; letter-spacing:0.05em;
+  }
+  .q-text{ font-size:16.5px; font-weight:700; margin:6px 0 14px; line-height:1.45;}
+  .opt{
+    display:flex; gap:12px; align-items:flex-start;
+    background:var(--panel); border:1.5px solid var(--line);
+    border-radius:12px; padding:12px 14px; margin-bottom:9px;
+    cursor:pointer; transition:border-color .15s ease, background .15s ease;
+  }
+  .opt.selected{ border-color:var(--amber); background:var(--amber-dim); }
+  .opt-num{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700; font-size:13px; color:var(--muted);
+    width:16px; flex-shrink:0; padding-top:1px;
+  }
+  .opt.selected .opt-num{ color:var(--amber); }
+  .opt-text{ font-size:13.5px; line-height:1.5; color:var(--text); }
+
+  .nav-row{ display:flex; gap:10px; margin-top:20px; }
+  .nav-row .primary-btn, .nav-row .ghost-btn{ margin-top:0; }
+  .btn-half{ flex:1; }
+
+  /* ---- results ---- */
+  .verdict-title{
+    text-align:center; font-size:22px; font-weight:800; margin:16px 0 4px;
+  }
+  .verdict-sub{ text-align:center; }
+  .bar-row{ margin-bottom:14px; }
+  .bar-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:13px; margin-bottom:5px;
+  }
+  .bar-head .name{ font-weight:600; }
+  .bar-head .score{ font-family:'JetBrains Mono', monospace; color:var(--muted); font-size:12px;}
+  .bar-track{ height:8px; background:var(--panel-2); border-radius:4px; overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:4px; }
+  .fill-red{ background:var(--red); }
+  .fill-yellow{ background:var(--yellow); }
+  .fill-green{ background:var(--green); }
+
+  .next-read{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:16px; margin-top:18px;
+  }
+  .next-read .label{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--amber); letter-spacing:0.08em; text-transform:uppercase; }
+  .next-read .chap{ font-weight:700; font-size:15px; margin-top:6px; }
+
+  .cta-note{
+    margin-top:18px; font-size:12.5px; color:var(--muted); line-height:1.6;
+    border-top:1px solid var(--line); padding-top:14px;
+  }
+
+  .divider{ height:1px; background:var(--line); margin:22px 0; }
+  a.inline-link{ color:var(--amber); }
+</style>
+
+<style>body{font-family:Arial,sans-serif;display:block}#app{margin:auto}.survey-top{max-width:480px;margin:auto;padding:16px 18px}.survey-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.survey-top a{color:#ccdfff}.survey-lang{display:flex;gap:6px}.survey-lang button{background:transparent;color:#ccdfff;border:1px solid rgba(204,223,255,.35);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}.survey-lang button[aria-pressed="true"]{background:#E8A33D;color:#161B22;border-color:#E8A33D;font-weight:700}.survey-lang button:focus-visible{outline:3px solid #E8A33D}#app:focus{outline:none}.opt:focus-visible{outline:3px solid #E8A33D}.opt{cursor:pointer}@media print{body{background:white;color:black}#app{max-width:none;min-height:0}.muted{color:#333}.result-actions,.ghost-btn,.survey-top{display:none}.bar-track{border:1px solid #bbb}.bar-head .name{color:black}.next-read{break-inside:avoid}}</style><link rel="stylesheet" href="/assets/goai-wp.css?v=33"><link rel="stylesheet" href="/assets/responsive.css?v=29870819">
+</head><body><div class="survey-top"><a id="back-link" href="/ai-readiness/">← Chọn công cụ khác</a><div class="survey-lang" role="group" aria-label="Ngôn ngữ"><button type="button" data-lang-option="vi" aria-pressed="true"><span aria-hidden="true">🇻🇳</span> VI</button><button type="button" data-lang-option="en" aria-pressed="false"><span aria-hidden="true">🇬🇧</span> EN</button><button type="button" data-lang-option="zh" aria-pressed="false"><span aria-hidden="true">🇨🇳</span> 中文</button></div></div><main id="app" aria-label="Đèn Tín Hiệu" data-contact-url="/contact/?nguon=den-tin-hieu"></main>
+<script src="/assets/survey-i18n.js?v=32"></script>
+
+<script src="/assets/survey.js?v=32" defer></script>
+
+</body></html>

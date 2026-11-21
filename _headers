@@ -1,0 +1,14 @@
+/*
+  Content-Security-Policy: base-uri 'self'; object-src 'none'; form-action 'self' https://script.google.com https://script.googleusercontent.com; frame-ancestors 'self'; connect-src 'self' https://chat.go-ai.vn https://challenges.cloudflare.com https://script.google.com https://script.googleusercontent.com https://ai-agent-worker.trantansy.workers.dev https://cloudflareinsights.com; upgrade-insecure-requests
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/form-config.js
+  Cache-Control: no-cache

@@ -1,0 +1,48 @@
+/* Fix hiển thị hero trên điện thoại - nội dung từ Additional CSS */
+@media only screen and (max-width: 768px) {
+    /* 1. Thiết lập khung chuẩn và tăng chiều cao để có chỗ trống hiển thị nhóm người bên dưới */
+    .hero-photo {
+        position: relative !important;
+        display: block !important;
+        min-height: 550px !important; 
+    }
+
+    /* 2. Đặt ảnh làm background */
+    .hero-photo .hero-visual {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 0 !important;
+    }
+
+    /* 3. Neo ảnh xuống dưới cùng để khuôn mặt nhóm người không bị chữ đè lên */
+    .hero-photo .hero-visual img,
+    .hero-photo .hero-visual picture {
+        width: 100% !important;
+        height: 130% !important;
+        object-fit: cover !important;
+        object-position: center bottom !important; 
+    }
+
+    /* 4. Tạo hiệu ứng chuyển màu (Gradient) trắng từ trên xuống để làm nổi bật chữ xanh */
+    .hero-photo::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 150%;
+        /* Chuyển từ trắng tinh (để đọc chữ) sang trong suốt (để thấy ảnh) */
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%);
+        z-index: 1;
+    }
+
+    /* 5. Nâng nội dung chữ lên trên cùng */
+    .hero-photo .container.hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        padding-top: 65px !important;
+    }
+}

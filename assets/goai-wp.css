@@ -1,0 +1,90 @@
+/* ===== GO AI · WordPress overrides (v2.0) — chỉ nhắm vào các khối cụ thể ===== */
+[hidden]{display:none!important}
+img,svg{max-width:100%}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+
+/* ---------- 1. "Một hành trình · Năm năng lực": thẻ đồng đều + hình minh họa + mô tả ---------- */
+.capability-grid{
+  grid-template-columns:repeat(auto-fit,minmax(205px,1fr))!important;
+  align-items:stretch;gap:16px!important;
+}
+.capability-grid>article.capability{
+  display:flex;flex-direction:column;height:100%;min-width:0;
+  padding:20px 18px 18px!important;
+}
+.capability-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.capability-art{
+  flex:0 0 auto;width:52px;height:52px;padding:11px;border-radius:14px;
+  background:#eaf2fc;color:#1455d6;fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+.capability-grid .capability-tag{margin-top:16px}
+.capability-grid h3{margin-top:8px!important}
+.capability-grid article>p{margin:8px 0 0;font-size:.98rem;line-height:1.5}
+.capability-desc{
+  margin:12px 0 0!important;padding:10px 12px;border-radius:10px;
+  background:#f4f8fd;border-left:3px solid #1858be;
+  font-size:.875rem!important;line-height:1.55!important;color:#3b5778;
+}
+.capability-grid details{margin-top:auto!important;padding-top:16px}
+.capability-grid details[open]{padding-top:16px}
+
+/* ---------- 2. "Vì sao chuyển đổi AI?": thẻ đồng đều + mô tả ---------- */
+.why-ai .outcome-grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important}
+.why-ai .outcome-grid>article{display:flex;height:100%}
+.why-ai .outcome-trigger{display:flex;flex-direction:column;align-items:flex-start;width:100%;height:100%}
+.why-ai .outcome-desc{
+  display:block;margin-top:12px;padding-top:12px;width:100%;
+  border-top:1px dashed #cbdbea;font-size:.9rem;line-height:1.55;color:var(--muted,#526782);
+}
+.why-ai .outcome-more{margin-top:auto!important;padding-top:16px}
+
+/* ---------- 3. Bộ sách AI · Trần Tấn Sỹ: gọn, cân đối ---------- */
+.books-section .container{max-width:1120px}
+.books-section .section-heading{margin-bottom:14px}
+.books-section .section-heading h2{font-size:clamp(1.6rem,3.2vw,2rem)}
+.books-section .books-journey{line-height:1.7}
+.books-section .books-tabs{
+  display:flex!important;flex-wrap:wrap;justify-content:center;gap:12px;
+  max-width:900px;margin:0 auto;padding:0!important;overflow:visible!important;
+}
+.books-section .book-tab{
+  flex:0 0 calc((100% - 48px)/5);min-width:0;padding:10px 8px 12px;
+  justify-content:flex-start;scroll-snap-align:none;
+}
+.books-section .book-cover{
+  height:auto!important;aspect-ratio:2/3;width:100%;max-width:150px;margin-inline:auto;
+}
+.books-section .book-cover img{width:100%;height:100%;object-fit:contain}
+.books-section .book-level{font-size:.78rem;line-height:1.3;margin-top:8px;min-height:2.1em}
+.books-section .book-title{font-size:.8rem;line-height:1.3;margin-top:4px;overflow-wrap:anywhere}
+.books-section .book-help{text-align:center;margin:10px 0 12px}
+.books-section .book-panel{
+  max-width:900px;margin-inline:auto;grid-template-columns:minmax(200px,.8fr) 1.6fr!important;
+  align-items:center;gap:10px 26px;padding:18px 24px;
+}
+.books-section .book-panel[hidden]{display:none!important}
+.books-section .book-panel h3{font-size:1.15rem;line-height:1.45}
+.books-section .book-panel>p{font-size:.95rem;line-height:1.7}
+.books-section .books-message{max-width:900px;margin-inline:auto}
+@media (max-width:900px){
+  .books-section .books-tabs{gap:10px}
+  .books-section .book-tab{flex-basis:calc((100% - 40px)/5);padding:8px 5px 10px}
+  .books-section .book-level{font-size:.7rem}
+  .books-section .book-title{font-size:.68rem}
+}
+@media (max-width:640px){
+  .books-section .books-tabs{gap:10px}
+  .books-section .book-tab{flex-basis:calc((100% - 20px)/3)}   /* 3 + 2 cuốn, luôn cân giữa */
+  .books-section .book-level{font-size:.78rem}
+  .books-section .book-title{font-size:.78rem}
+  .books-section .book-cover{max-width:120px}
+  .books-section .book-panel{grid-template-columns:1fr!important;padding:16px 18px}
+}
+
+/* ---------- Page template mặc định / mẫu trang (v2.5.1) ---------- */
+.goai-wp-page{padding:48px 0 72px}
+.goai-wp-page--full{padding:0}
+.goai-wp-page--narrow .container,.goai-wp-page--default .container{max-width:860px;margin-inline:auto;padding-inline:20px}
+.goai-wp-title{margin:0 0 24px}
+.goai-wp-content>*{max-width:100%}
